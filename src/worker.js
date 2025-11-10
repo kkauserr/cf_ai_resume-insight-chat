@@ -356,9 +356,9 @@ Demonstrated analytical and technical skills. Knowledge of basic structured prog
 
   async  run(model, input) {
   const response = await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/10bafe56a915c8b24ce715bc667a93ee/ai/run/${model}`,
+    `https://api.cloudflare.com/client/v4/accounts/[ACCOUNT ID]/ai/run/${model}`,
     {
-      headers: { Authorization: "Bearer A8IlP3npfjOUWDQ5f7_pbINLB-YpAaIv8ZOv-qnG" },
+      headers: { Authorization: "[API TOKEN}" },
       method: "POST",
       body: JSON.stringify({ ...input, stream: true })
 
@@ -393,11 +393,11 @@ async handleAIAnalysis(request) {
         await new Promise(r => setTimeout(r, 1500));
 
         const response = await fetch(
-          "https://api.cloudflare.com/client/v4/accounts/10bafe56a915c8b24ce715bc667a93ee/ai/run/@cf/meta/llama-3-8b-instruct",
+          "https://api.cloudflare.com/client/v4/accounts/[ACCOUNT ID]/ai/run/@cf/meta/llama-3-8b-instruct",
           {
             method: "POST",
             headers: {
-              "Authorization": "Bearer A8IlP3npfjOUWDQ5f7_pbINLB-YpAaIv8ZOv-qnG",
+              "Authorization": "[API TOKEN]",
               "Content-Type": "application/json"
             },
             body: JSON.stringify({ prompt: chat, stream: true, max_tokens: 1000 })
